@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Сортировка выбором</title>
+
+	<style type="text/css">
+		#container {
+			width: 400px;
+			padding: 20px;
+			margin: 50px auto;
+			background: #d5d5d5;
+		}
+	</style>
+
+</head>
+
+
+<body>
+	<div id="container">
+
+	</div>
+
+<script>
+	var MyArray = [22, 12, 43, 6, 8, 15, 13, 10, 24, 22, 8];
+	longArray = MyArray.length;
+
+	document.getElementById("container").innerHTML = "до " + MyArray + "<div id='container2'></div>";
+	//Принцип сортировки выбором:
+	// Находится минимальное или максимальное значение в массиве и меняется местами с нулевым элементом массива
+	// В части массива без учета нулевого элемента ищется сново минимальное значение и меняется местами с первым элементом массива
+	// И т.д. 
+
+	j = 0;
+
+	for(i = 0; i < longArray; i++) {
+		item_min = MyArray[i];
+
+		for(j = i; j < longArray; j++) {
+			if (MyArray[j] < item_min) {
+				item_min = MyArray[j];
+				MyArray[j] = MyArray[i];
+				MyArray[i] = item_min;
+			}
+		}
+	}
+
+	document.getElementById("container2").innerHTML = "после " + MyArray;
+
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Сортировка вставками</title>
+
+	<style type="text/css">
+		#container {
+			width: 400px;
+			padding: 20px;
+			margin: 50px auto;
+			background: #d5d5d5;
+		}
+	</style>
+
+</head>
+
+
+<body>
+	<div id="container">
+
+	</div>
+
+<script>
+	var MyArray = [22, 12, 43, 6, 8, 15, 13, 10, 24, 22, 8];
+	longArray = MyArray.length;
+
+	document.getElementById("container").innerHTML = "до " + MyArray + "<div id='container2'></div>";
+	// Принцип сортировки вставками:
+	// Массив считается неотсортированным и в новый отсортированный массив заносится нулевой элемент неотсортированного массива
+	// Затема заносится первый элемент и сравнивается с нулевым, если меньше, то меняются местами в новом массиве
+	// Затем второй элемент неотсортированного массива сравнивается справо налево с элементами остортированного массива
+	// Когда находится занимаемое им место, то все элементы, которые больше, вмещаются вправо
+	// И т.д.
+
+	for (i = 0; i < longArray; i++) {
+		item_temp = MyArray[i];
+		j = i;
+
+		while((j>0) && (MyArray[j-1] > item_temp)) {
+			MyArray[i] = MyArray[j-1];
+			j--;
+		}
+		MyArray[j] = item_temp;
+	}
+	
+
+	document.getElementById("container2").innerHTML = "после " + MyArray;
+
+
+</script>
+	
+</body>
+</html>
